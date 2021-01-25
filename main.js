@@ -30,12 +30,24 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    backgroundColor: '#EEE',
+    color: '#000',
     webPreferences: {
       nodeIntegration: true
-    }
+    },
   });
 
   win.loadFile('index.html');
+}
+
+function getPythonCode() {
+  var spawn = require('child_process').spawn;
+
+  var process = spawn('python', ["./server.py"], 1234);
+
+  process.stdout.on('data', function (data) {
+    console.log(data.toString());
+  })
 }
 
 app.whenReady().then(createWindow);
@@ -49,5 +61,6 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
+    getPythonCode();
   }
 });
