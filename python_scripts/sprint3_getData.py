@@ -1,16 +1,22 @@
 import csv
 
-
-def getData():
+def getData(fn = ""):
   ##############################################################################
   # get data
-  num_rows = 0
-  file1 = "amazon_co-ecommerce_sample.csv"
-  file2 = "sample.csv"
+  print("reading ", fn)
+
+  name = ""
+  if len(fn) != 0:
+    name = fn 
+  else:
+    name = "default.csv"
+
+  #print(name)
+
   l = []
   category = []
 
-  with open(file1, encoding="utf8") as f:
+  with open(name, encoding="utf8") as f:
     reader = csv.reader(f)
     # get the column names
     category = next(reader)
@@ -33,9 +39,7 @@ def getData():
     for c in range(len(l)):#col
       col.append(l[c][r])
     db.append(col)
+
   ##############################################################################
-  # same as the csv column names
-  header = ("uniq_id","product_name","manufacturer","price","number_available_in_stock","number_of_reviews","number_of_answered_questions","average_review_rating","amazon_category_and_sub_category","customers_who_bought_this_item_also_bought","description","product_information","product_description","items_customers_buy_after_viewing_this_item","customer_questions_and_answers","customer_reviews","sellers")
-  ##############################################################################
-  #return the db
-  return db
+  #return the header list and db
+  return (category,db)
