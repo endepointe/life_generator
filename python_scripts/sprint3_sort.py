@@ -59,7 +59,7 @@ def byUniqId(param = [], data = [], header = []):
   sorted_by_uniq_id = items
   '''
   for i in range(len(sorted_by_uniq_id)):
-    print(sorted_by_uniq_id[i][0][0],sorted_by_uniq_id[i][2])
+    print(sorted_by_uniq_id[i][0],sorted_by_uniq_id[i][2])
   '''
   return  (sorted_by_uniq_id)
 
