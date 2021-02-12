@@ -1,15 +1,27 @@
 import csv
+import errno
+import os
+
+def readParams(inFile = ""):
+#https://stackoverflow.com/questions/19579997/how-to-catch-empty-user-input-using-a-try-and-except-in-python
+  try:
+    name = open(inFile, mode="r", encoding="utf8")
+    if not name:
+      raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), name)
+    else:
+      with name as f:
+        reader = csv.reader(f)
+        line = next(reader)
+        #print(line)
+        return line
+  except FileNotFoundError as e:
+    print(e)
+
 
 def getData(fn = ""):
   ##############################################################################
   # get data
-  print("reading ", fn)
-
-  name = ""
-  if len(fn) != 0:
-    name = fn 
-  else:
-    name = "default.csv"
+  name = "amazon_co-ecommerce_sample.csv"
 
   #print(name)
 

@@ -6,20 +6,25 @@ import sprint3_getData
 ################################################################################
 # represents the commandline arguments
 inFile = str(sys.argv[1])
-csvFile = str(sys.argv[2]) 
-(header, d) = sprint3_getData.getData(inFile)
-(column_names, data) = sprint3_getData.getData(csvFile)
+
+################################################################################
+# get the data from the local csv file
+(header, data) = sprint3_getData.getData()
+
+################################################################################
+# get the fields to search for from the inFile
+params = sprint3_getData.readParams(inFile)
 
 ################################################################################
 # just because it looks better
 sorting = sprint3_sort
 
 ################################################################################
-# do the things
-print(header)
-print(column_names)
-#print(sorting.byUniqId(data))
-#print(sorting.byNumOfReviews(data))
+# pass the params representing the kind of data to retrieve.
+# signature of params: 
+#   input_item_type, input_item_category, input_number_to generate
+print(sorting.byUniqId(params, data))
+# print(sorting.byNumOfReviews(inFile, data))
 
 ################################################################################
 # write 

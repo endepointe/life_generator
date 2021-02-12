@@ -20,8 +20,10 @@ import sprint3_getData
 15 customer_reviews
 16 sellers
 '''
-def byUniqId(data = []):
+
+def byUniqId(params = [], data = []):
   d = data[0]
+  
   d.sort()
   return d 
 
