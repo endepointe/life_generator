@@ -11,9 +11,10 @@ def readParams(inFile = ""):
     else:
       with name as f:
         reader = csv.reader(f)
-        line = next(reader)
+        header = next(reader)
+        params = next(reader)
         #print(line)
-        return line
+        return (header, params) 
   except FileNotFoundError as e:
     print(e)
 

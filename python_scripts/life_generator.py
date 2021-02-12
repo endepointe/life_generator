@@ -13,7 +13,7 @@ inFile = str(sys.argv[1])
 
 ################################################################################
 # get the fields to search for from the inFile
-params = sprint3_getData.readParams(inFile)
+(param_type,params) = sprint3_getData.readParams(inFile)
 
 ################################################################################
 # just because it looks better

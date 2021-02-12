@@ -21,9 +21,10 @@ import sprint3_getData
 16 sellers
 '''
 
-def byUniqId(params = [], data = []):
+def byUniqId(param = [], data = []):
   d = data[0]
-  
+
+  if any(param[0] in entry for entry in data[0])
   d.sort()
   return d 
 
