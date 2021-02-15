@@ -44,8 +44,21 @@ sorting = sprint3_sort
 16 sellers
 '''
 s = sorting.byUniqId(params, data, header)
-print(s[0][16])
-# print(sorting.byNumOfReviews(inFile, data))
+#for i in range(int(len(s) / 2)):
+#  print(s[i])
+
+'''
+for i in range(3):
+  print("***************************************")
+  for j in range(8):
+    #print(" [uniq_id, ", header[j+1], "]\n", s[i][j+1],"\n")
+  print("\n")
+  '''
+n = sorting.byNumOfReviews(params, data, header)
+#for i in range(len(n)):
+#  print(n[i])
+
+
 
 ################################################################################
 # write 

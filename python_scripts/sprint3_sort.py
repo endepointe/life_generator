@@ -35,34 +35,60 @@ def byUniqId(param = [], data = [], header = []):
   print(input_item_category)
   print(input_item_type)
   '''
-  items = []
+  uniq_ids = []
   sorted_by_uniq_id = []
-
+  
   for i in range(len(data[0])):
     if (data[8][i].find(param[0]) >= 0) or (data[8][i].find(param[1]) >= 0):
       row = []
-      '''
-      print("********************************")
-      '''
+      #print("********************************")
+      # the first index will be the identifier, then append
+      # the columns of data. index 0 is the uniq id
+      #print(data[0][i])
+      row.append(data[0][i])
       for j in range(len(data)):
-        # create an index to use as a [key, value] pair for use
-        # with the sort() method. unique_ids will be sorted by key
-        row.append([data[0][i],data[j][i]])
-        '''
-        print(header[j],": ", row)
-      print("\n")
-        '''
-      items.append(row)
-  #[row][col]#
-  #sort the list by key
-  items.sort()
-  sorted_by_uniq_id = items
-  '''
-  for i in range(len(sorted_by_uniq_id)):
-    print(sorted_by_uniq_id[i][0],sorted_by_uniq_id[i][2])
-  '''
-  return  (sorted_by_uniq_id)
+        row.append(data[j][i])
+        #print(header[j],": ", row)
+      #print("\n")
+      uniq_ids.append(row)
 
-def byNumOfReviews(data = []):
-  d = data[5] 
-  return d
+  #[row][col]#
+  #sort the list by uniq_id
+  uniq_ids.sort()
+  sorted_by_uniq_id = uniq_ids
+
+def byNumOfReviews(param = [], data = [], header = []):
+
+  num_reviews = []
+  sorted_by_num_reviews = []
+
+  size = len(data[0])
+  for i in range(size):
+    # 8 is the category type and or subcategory
+    if (data[8][i].find(param[0]) >= 0) or (data[8][i].find(param[1]) >= 0):
+      row = []
+      #print("********************************")
+      # the first index will be the identifier, then append
+      # the columns of data. index 5 is the number of reviews
+      #row.append(data[5][i])
+      val = data[5][i]
+      #print(len(val), type(val))
+      #idkwtfiamdoingbutimdoingitthisway
+      s = []
+      for x in val:
+        s += x
+      row += str(s)
+      for j in range(7):#len(data)):
+        row.append(data[j][i])
+        #print(header[j],": ", row)
+      #print("\n")
+      num_reviews.append(row)
+  
+  num_reviews.sort()
+  
+  for i in range(len(num_reviews)):
+    print(num_reviews[i])
+
+  sorted_by_num_reviews = num_reviews
+
+  return  sorted_by_num_reviews
