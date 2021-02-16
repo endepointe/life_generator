@@ -43,21 +43,16 @@ sorting = sprint3_sort
 15 customer_reviews
 16 sellers
 '''
-s = sorting.byUniqId(params, data, header)
-#for i in range(int(len(s) / 2)):
-#  print(s[i])
-
 '''
 for i in range(3):
   print("***************************************")
   for j in range(8):
     #print(" [uniq_id, ", header[j+1], "]\n", s[i][j+1],"\n")
   print("\n")
-  '''
-n = sorting.byNumOfReviews(params, data, header)
-#for i in range(len(n)):
-#  print(n[i])
-
+'''
+uniqId = sorting.byUniqId(params, data, header)
+numReviews = sorting.byNumOfReviews(params, data, header)
+avgRating = sorting.byAvgRevRating(params, data, header)
 
 
 ################################################################################

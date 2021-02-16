@@ -25,16 +25,12 @@ https://www.geeksforgeeks.org/python-finding-strings-with-given-substring-in-lis
 16 sellers
 '''
 
+################################################################################
 # param[0] searches through data[8] for a subcategory (static set to toys)
 # param[1] searches through data[8] for main category
 # param[2] specifies how many items to return
 def byUniqId(param = [], data = [], header = []):
-  '''
-  input_item_type = [i for i in data[8] if str(param[0]) in i]
-  input_item_category = [i for i in data[8] if str(param[1]) in i]
-  print(input_item_category)
-  print(input_item_type)
-  '''
+  
   uniq_ids = []
   sorted_by_uniq_id = []
   
@@ -51,12 +47,17 @@ def byUniqId(param = [], data = [], header = []):
         #print(header[j],": ", row)
       #print("\n")
       uniq_ids.append(row)
-
   #[row][col]#
   #sort the list by uniq_id
   uniq_ids.sort()
   sorted_by_uniq_id = uniq_ids
 
+  return sorted_by_uniq_id
+
+###############################################################################
+# param[0] searches through data[8] for a subcategory (static set to toys)
+# param[1] searches through data[8] for main category
+# param[2] specifies how many items to return
 def byNumOfReviews(param = [], data = [], header = []):
 
   num_reviews = []
@@ -71,24 +72,48 @@ def byNumOfReviews(param = [], data = [], header = []):
       # the first index will be the identifier, then append
       # the columns of data. index 5 is the number of reviews
       #row.append(data[5][i])
-      val = data[5][i]
-      #print(len(val), type(val))
-      #idkwtfiamdoingbutimdoingitthisway
-      s = []
-      for x in val:
-        s += x
-      row += str(s)
-      for j in range(7):#len(data)):
+      if data[5][i]:
+        rev = int(data[5][i])
+      row.append(rev)
+      for j in range(len(data)):
         row.append(data[j][i])
         #print(header[j],": ", row)
       #print("\n")
       num_reviews.append(row)
-  
-  num_reviews.sort()
-  
-  for i in range(len(num_reviews)):
-    print(num_reviews[i])
-
+                                                                                 
+  num_reviews.sort(key=None, reverse=True)
   sorted_by_num_reviews = num_reviews
 
-  return  sorted_by_num_reviews
+  return  sorted_by_num_reviews[0:int(10 * param[2])]
+
+###############################################################################
+# param[0] searches through data[8] for a subcategory (static set to toys)
+# param[1] searches through data[8] for main category
+# param[2] specifies how many items to return
+# average_reviw_rating / highest to lowest / index 7
+def byAvgRevRating(param = [], data = [], header = []):
+
+  avg_rev_ratings = []
+  sorted_by_avg_rev_rating = []
+
+  size = len(data[0])
+  for i in range(size):
+    # 8 is the category type and or subcategory
+    if (data[8][i].find(param[0]) >= 0) or (data[8][i].find(param[1]) >= 0):
+      row = []
+      #print("********************************")
+      # the first index will be the identifier, then append
+      # the columns of data. index 7 is the average reveiw rating 
+      if data[7][i]:
+        rev = data[7][i]
+      row.append(rev[0:3])
+      for j in range(len(data)):
+        row.append(data[j][i])
+        #print(header[j],": ", row)
+      #print("\n")
+      avg_rev_ratings.append(row)
+                                                                                 
+  avg_rev_ratings.sort(key=None, reverse = True)
+  sorted_by_avg_rev_rating = avg_rev_ratings 
+
+  return sorted_by_avg_rev_rating[0:int(param[2])]
