@@ -55,9 +55,15 @@ numReviews = sorting.byNumOfReviews(params, data, header)
 avgRating = sorting.byAvgRevRating(params, data, header)
 
 
-################################################################################
+#######
 # write 
+'''
 with open("output.csv", 'w', newline='') as outfile:
   output = csv.writer(outfile, delimiter=',')
   output.writerow(['input_item_type']+['input_item_category']+['input_number_to_generate']+['output_item_name']+['output_item_rating']+['output_item_num_reviews'])
-  output.writerow(['data goes here'])
+  cols_to_print = [1,2,4,6,8,9]
+  for row in range(len(avgRatings)):
+    for col in range(len(cols_to_print)):
+      val = cols_to_print[col]
+      output.writerow[]
+'''

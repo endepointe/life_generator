@@ -1,3 +1,4 @@
+import csv
 import sys
 import sprint3_getData
 '''
@@ -51,6 +52,16 @@ def byUniqId(param = [], data = [], header = []):
   #sort the list by uniq_id
   uniq_ids.sort()
   sorted_by_uniq_id = uniq_ids
+  
+  #######
+  # write 
+  with open("uniq_id_output.csv", 'w', newline='') as outfile:
+    output = csv.writer(outfile, delimiter=',')
+    output.writerow(['input_item_type']+['input_item_category']+['input_number_to_generate']+['output_item_name']+['output_item_rating']+['output_item_num_reviews\n'])
+    for row in range(len(sorted_by_uniq_id)):
+      for col in range(6):
+        s = str(sorted_by_uniq_id[row][2]).encode("utf-8")
+        output.writerow([param[0]]+[param[1]]+[param[2]]+[s]+[sorted_by_uniq_id[row][6]])
 
   return sorted_by_uniq_id
 
@@ -84,6 +95,16 @@ def byNumOfReviews(param = [], data = [], header = []):
   num_reviews.sort(key=None, reverse=True)
   sorted_by_num_reviews = num_reviews
 
+  #######
+  # write 
+  with open("number_of_reviews_output.csv", 'w', newline='') as outfile:
+    output = csv.writer(outfile, delimiter=',')
+    output.writerow(['input_item_type']+['input_item_category']+['input_number_to_generate']+['output_item_name']+['output_item_rating']+['output_item_num_reviews\n'])
+    for row in range(len(sorted_by_num_reviews)):
+      for col in range(6):
+        s = str(sorted_by_num_reviews[row][2]).encode("utf-8")
+        output.writerow([param[0]]+[param[1]]+[param[2]]+[s]+[sorted_by_num_reviews[row][6]])
+
   return  sorted_by_num_reviews[0:int(10 * param[2])]
 
 ###############################################################################
@@ -115,5 +136,15 @@ def byAvgRevRating(param = [], data = [], header = []):
                                                                                  
   avg_rev_ratings.sort(key=None, reverse = True)
   sorted_by_avg_rev_rating = avg_rev_ratings 
+
+  #######
+  # write 
+  with open("avg_rev_rating_output.csv", 'w', newline='') as outfile:
+    output = csv.writer(outfile, delimiter=',')
+    output.writerow(['input_item_type']+['input_item_category']+['input_number_to_generate']+['output_item_name']+['output_item_rating']+['output_item_num_reviews\n'])
+    for row in range(len(sorted_by_avg_rev_rating)):
+      for col in range(6):
+        s = str(sorted_by_avg_rev_rating[row][2]).encode("utf-8")
+        output.writerow([param[0]]+[param[1]]+[param[2]]+[s]+[sorted_by_avg_rev_rating[row][6]])
 
   return sorted_by_avg_rev_rating[0:int(param[2])]

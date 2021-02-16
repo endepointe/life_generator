@@ -59,6 +59,7 @@ sorting = sprint3_sort
 15 customer_reviews
 16 sellers
 '''
+
 def getResults():
   try:
     cnt = int(result_count.get()) 
@@ -72,13 +73,24 @@ def getResults():
     numReviews = sorting.byNumOfReviews(params, data, header)
     avgRatings = sorting.byAvgRevRating(params, data, header)
     data_area = ttk.Frame(root).grid()
+    # specify the columns, as many or as little as needed
     cols_to_print = [1,2,4,6,8,9]
     for row in range(len(avgRatings)):
-      #print("\n")
-      for col in range(len(cols_to_print)):#avgRatings[row]) - 9):
-        #print(avgRatings[row][col])
+      for col in range(len(cols_to_print)):
         val = cols_to_print[col]
         ttk.Label(data_area, text=avgRatings[row][val]).grid(column=col, row=row+5)
+
+    #######
+    # write 
+    with open("gui_output.csv", 'w', newline='') as outfile:
+      output = csv.writer(outfile, delimiter=',')
+      output.writerow(['input_item_type']+['input_item_category']+['input_number_to_generate']+['output_item_name']+['output_item_rating']+['output_item_num_reviews\n'])
+      for row in range(len(avgRatings)):
+        for col in range(6):
+          s = str(avgRatings[row][2]).encode("utf-8")
+          output.writerow([params[0]]+[params[1]]+[params[2]]+[s]+[avgRatings[row][6]])
+
+
   except ValueError:
     pass
 
