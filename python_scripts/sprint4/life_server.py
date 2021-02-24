@@ -8,7 +8,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
   s.listen(5)
   conn, addr = s.accept()
   with conn: 
-    print('I am the life server, connected by', addr)
+    print('running life server, connected by', addr)
     client_msg = ''
     while 1:
       data = conn.recv(1024)
