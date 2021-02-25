@@ -7,7 +7,8 @@ PORT = 5000
 HOST = 'localhost'
 
 # arguments are passed in as a space separated string:
-#   input_item_type,input_item_category,input_number_to_generate
+#   py population_client.py type category number_to_generate
+
 # Category list and CSV column names can be found here:
 #     https://www.kaggle.com/PromptCloudHQ/toy-products-on-amazon
 # For now, just use: Toys Hobbies <some integer>
