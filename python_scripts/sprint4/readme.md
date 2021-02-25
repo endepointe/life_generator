@@ -14,13 +14,13 @@ Then, start the population_client.py file with the given command line args:
 
 To terminate:
 
-  Ctrl + C on the server
+    Ctrl + C on the server
 
-    or
-  
-  sent the parameter DONE from the client
+  or send the parameter DONE from the client
 
-    Example: py population_client.py DONE
+  Example: 
+
+    py population_client.py DONE
     
   
   Reason for DONE is the SIGINT is not working with either
