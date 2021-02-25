@@ -1,3 +1,4 @@
+''' EXAMPLE ONLY
 import socket
 import os
 
@@ -23,3 +24,4 @@ while True:
     print("Shutting down.")
     client.close()
     break
+'''

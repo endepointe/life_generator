@@ -1,3 +1,4 @@
+''' EXAMPLE ONLY
 import socket
 
 HOST = '127.0.0.1'
@@ -22,3 +23,4 @@ print("-" * 20)
 print("Shutting down...")
 server.close()
 print("Done")
+'''
