@@ -10,10 +10,6 @@ Then, start the population_client.py file with the given command line args:
 
     py population_client.py Toys Hobbies <some integer>
 
-To begin, start the pop_server.py script
-
-Then, start the life_client.py file
-
 To terminate:
 
     Ctrl + C on the server
