@@ -64,6 +64,7 @@ sorting = sprint4_sort
 '''
 
 def getResults():
+
   host = 'localhost'
   port = 6000
   print(host, port)
@@ -79,7 +80,8 @@ def getResults():
     s.send(bytes(year.get() + ',' + state.get(), encoding='utf-8'))
     server_data = s.recv(4096)
     s = str(server_data.decode('utf-8')).split(',')
-    #get the population data returned in a str format
+    #################################################
+    # get the population data returned in a str format
     p = s[2:]
     population = ""
     for i in range(len(p)):
@@ -125,12 +127,14 @@ window = ttk.Frame(root, padding="5 5 5 5").grid()
 
 ttk.Label(window, text="Number of Results").grid(column=0, row=0)
 
+# main category
 category = StringVar(window)
 category.set(MAINCAT[0])
 
 subcategory = StringVar(window)
 subcategory.set(SUBCAT[0])
 
+# number of items to return
 result_count = StringVar(window)
 count_entry = ttk.Entry(window, textvariable=result_count)
 count_entry.grid(column=1,row=0)
@@ -153,6 +157,5 @@ st.grid(column=2, row=1)
 
 button = Button(window, text="Get Results", command=getResults)
 button.grid(column=1,row=2)
-
 
 root.mainloop()
